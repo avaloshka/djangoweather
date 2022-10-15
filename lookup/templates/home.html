@@ -3,7 +3,36 @@
 {% block content %}
 	</br>
 	<div class="container">
-		<h1>home after all</h1>
+
+		{{ zipcode }}
+
+		<br/><br/>
+		{% if api %}
+			{% if api == 'Error...' %}
+				There was an error, try again
+
+			{% else %}
+				<div class="card {{ category_color }}" style="width: 18rem;">
+					<div>
+						<img src="..." class="card-img-top" alt="...">
+					</div>
+				  <div class="card-body">
+				    <h1 class="card-title">{{api.0.Category.Name}}</h1>
+				    <h4>{{api.0.ReportingArea}}<br/></h4>
+				    
+				    Air Quality: {{ api.0.AQI }}<br/><br/>
+
+				    
+				    <p>{{ category_description }}</p>
+				  
+				    <a href="#" class="btn btn-primary">Go somewhere</a>
+				  </div>
+				</div>
+								
+				
+			{% endif %}
+
+		{% endif %}
 	</div>
 {% endblock %}
 
